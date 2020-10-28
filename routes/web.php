@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\User\UserSettingsController;
+use App\Http\Controllers\User\UserConfigController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,6 +23,6 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::middleware(['auth'])->group(function() {
-    Route::get('/user/settings', [UserSettingsController::class, 'getSettings']);
-    Route::post('/user/settings', [UserSettingsController::class, 'postSettings']);
+    Route::get('/user/settings', [UserConfigController::class, 'getConfig']);
+    Route::post('/user/settings', [UserConfigController::class, 'updateConfig']);
 });
