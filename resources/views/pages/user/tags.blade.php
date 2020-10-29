@@ -29,7 +29,7 @@
             <table class="table table-bordered table-dark">
                 <thead>
                     <th>Tag Name</th>
-                    <th>Created At</th>
+                    <th>Created</th>
                     <th>Remove</th>
                 </thead>
 
@@ -38,7 +38,7 @@
                         @foreach($tags as $tag)
                         <tr>
                             <td>{{ ucfirst($tag->name) }}</td>
-                            <td>{{ $tag->created_at->format('F j, Y, g:i a') }}</td>
+                            <td>{{ $tag->created_at->diffForHumans() }}</td>
                             <td>
                                 <a class="btn btn-danger" href='/user/tags/delete/{{ $tag->id }}'>Remove</a>
                             </td>
