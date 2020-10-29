@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\User;
 
-// Services 
+use Auth;
 use App\Http\Services\UserConfigService;
 
 use App\Http\Controllers\Controller;
@@ -12,12 +12,17 @@ class UserConfigController extends Controller
 {
     public function getConfig()
     {
+        $config = UserConfigService::getConfig(Auth::user()->id);
 
-        return view('pages.user.config');
+        return view('pages.user.config', compact('config'));
     }
 
-    public function updateConfig()
+    public function updateConfig(Request $request)
     {
+        $currentAccountBalance = $request->current_account_balance;
 
+        UserConfigService::updateCurrentAccountBalance(Auth::user()->id, $currentAccountBalance);
+
+        return redirect()->back();
     }
 }

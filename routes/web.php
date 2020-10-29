@@ -23,6 +23,6 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::middleware(['auth'])->group(function() {
-    Route::get('/user/settings', [UserConfigController::class, 'getConfig']);
-    Route::post('/user/settings', [UserConfigController::class, 'updateConfig']);
+    Route::get('/user/config', [UserConfigController::class, 'getConfig']);
+    Route::post('/user/config', [UserConfigController::class, 'updateConfig']);
 });
