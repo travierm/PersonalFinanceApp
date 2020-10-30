@@ -22,8 +22,10 @@ class UserTransactionTagController extends Controller
         $userId = Auth::user()->id;
         $tagName = $request->tag_name;
 
-        UserTransactionTagService::createTag($userId, $tagName);
-
+        if($tagName) {
+            UserTransactionTagService::createTag($userId, $tagName);
+        }
+        
         return redirect()->back();
     }
 
