@@ -31,10 +31,12 @@ class CreateTransactionsTable extends Migration
                 ->onDelete('cascade');
 
             $table->foreignId('source_id')
-                ->constrained('user_transaction_sources');
+                ->constrained('user_transaction_sources')
+                ->nullable();
 
             $table->text('description')->nullable();
             $table->float('amount');
+            $table->enum('type', ['income', 'expense']);
             $table->timestamp('date')->useCurrent();
             $table->timestamps();
         });
