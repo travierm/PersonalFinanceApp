@@ -31,8 +31,9 @@ class CreateTransactionsTable extends Migration
                 ->onDelete('cascade');
 
             $table->foreignId('source_id')
-                ->constrained('user_transaction_sources')
-                ->nullable();
+                ->nullable()
+                ->constrained('user_transaction_sources');
+                
 
             $table->text('description')->nullable();
             $table->float('amount');

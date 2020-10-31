@@ -33,6 +33,7 @@
 
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="/user/config">Account Config</a>
+                            <a class="dropdown-item" href="/transactions">Transactions</a>
                             <a class="dropdown-item" href="/transaction/create">Create Transaction</a>
                             
                             <a class="dropdown-item" href="/user/tags">Transaction Tags</a>

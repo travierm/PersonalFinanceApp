@@ -5,6 +5,7 @@
     <div class="row">
         <div class='col-lg-12'>
             <h1>Create Transaction</h1>
+            <h5>Current Account Balance: ${{ $currentAccountBalance }}</h5>
         </div>
     </div>
 
@@ -46,6 +47,7 @@
                 <div class="form-group">
                     <label>Tag</label>
                     <select class="form-control" name="tag_id">
+                        <option value="">None</option>
                         @foreach($tags as $tag)
                             <option value="{{ $tag->id }}">{{ ucfirst($tag->name) }}</option>
                         @endforeach
@@ -64,7 +66,8 @@
                     <input class="form-control" name="date" type="datetime-local" value="{{ now()->format('Y-m-d\TH:i') }}" />
                 </div>
 
-                <button class="btn btn-success mt-2">Create</button>
+                <button class="btn btn-success">Create</button>
+                <a href="/transactions" class="btn btn-primary mt-auto">View All</a>
             </div>
         </div>
     </form>

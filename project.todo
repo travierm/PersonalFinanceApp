@@ -3,3 +3,5 @@ Todo:
     ☐ Income / Expense type should switch amount from -$100 to $100 based on type
     ☐ Recurring Income should be a cron job
         - Possible email that goes out confirming amount
+    
+Read Reciepts: https://github.com/thiagoalessio/tesseract-ocr-for-php

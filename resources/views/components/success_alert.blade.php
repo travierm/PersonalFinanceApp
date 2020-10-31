@@ -1,5 +1,5 @@
-@if(@$success)
-    <div class="alert alert-success pl-0">
-        {{ $success }}
+@if(Session::has('success'))
+    <div class="alert alert-success">
+        {!! Session::get('success') !!}
     </div>
 @endif
