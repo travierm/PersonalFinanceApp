@@ -23,6 +23,9 @@ class CreateTransactionTagsTable extends Migration
             $table->foreignId('transaction_id')
                 ->constrained('transactions')
                 ->onDelete('cascade');
+            
+            $table->foreignId('tag_id')
+                ->constrained('user_transaction_tags');
 
             $table->timestamps();
         });
@@ -38,6 +41,7 @@ class CreateTransactionTagsTable extends Migration
         Schema::table('transaction_tags', function (Blueprint $table) {
             $table->dropForeign(['user_id']);
             $table->dropForeign(['transaction_id']);
+            $table->dropForeign(['user_transaction_tags']);
 
             $table->drop('transaction_tags');
         });

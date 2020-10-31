@@ -12,9 +12,11 @@
         @csrf
         
         <div class="row">
-            <div class="col-lg-3">
+            <div class="col-lg-4">
+                @include('components.error_alert')
+                @include('components.success_alert')
 
-                <!-- Amount -->
+                <!-- Type -->
                 <div class="form-group">
                     <label>Type</label>
                     <select class="form-control" name="type">
@@ -26,7 +28,28 @@
                 <!-- Amount -->
                 <div class="form-group">
                     <label>Amount</label>
-                    <input required class="form-control" name="amount" type="number" step="0.01" />
+                    <input class="form-control" name="amount" type="number" step="0.01" placeholder="Amount: $1.23" />
+                </div>
+
+                <!-- Source -->
+                <div class="form-group">
+                    <label>Source</label>
+                    <select class="form-control" name="source_id">
+                        <option value="">None</option>
+                        @foreach($sources as $source)
+                            <option value="{{ $source->id }}">{{ ucfirst($source->name) }}</option>
+                        @endforeach
+                    </select>
+                </div>
+
+                <!-- Tags -->
+                <div class="form-group">
+                    <label>Tag</label>
+                    <select class="form-control" name="tag_id">
+                        @foreach($tags as $tag)
+                            <option value="{{ $tag->id }}">{{ ucfirst($tag->name) }}</option>
+                        @endforeach
+                    </select>
                 </div>
 
                 <!-- Description -->
@@ -38,27 +61,7 @@
                 <!-- Date -->
                 <div class="form-group">
                     <label>Date of Transaction</label>
-                    <input class="form-control" name="datetime" type="date" value="{{ today()->format('Y-m-d') }}" />
-                </div>
-
-                <!-- Source -->
-                <div class="form-group">
-                    <label>Source</label>
-                    <select class="form-control" name="source">
-                        @foreach($sources as $source)
-                            <option value="{{ $source->id }}">{{ ucfirst($source->name) }}</option>
-                        @endforeach
-                    </select>
-                </div>
-
-                <!-- Tags -->
-                <div class="form-group">
-                    <label>Tag</label>
-                    <select class="form-control" name="tag">
-                        @foreach($tags as $tag)
-                            <option value="{{ $tag->id }}">{{ ucfirst($tag->name) }}</option>
-                        @endforeach
-                    </select>
+                    <input class="form-control" name="date" type="datetime-local" value="{{ now()->format('Y-m-d\TH:i') }}" />
                 </div>
 
                 <button class="btn btn-success mt-2">Create</button>

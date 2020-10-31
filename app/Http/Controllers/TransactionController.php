@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Auth;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use App\Http\Services\TransactionService;
 use App\Http\Services\UserTransactionTagService;
 use App\Http\Services\UserTransactionSourceService;
 
@@ -19,6 +21,36 @@ class TransactionController extends Controller
 
     public function postCreate(Request $request)
     {
+        $type = $request->type;
+        $date = Carbon::parse($request->date);
+        $tagId = $request->tag_id;
+        $sourceId = $request->source_id;
+        $description = $request->description;
 
+        $validatedData = $request->validate([
+            'date' => 'required',
+            'amount' => 'required',
+        ]);
+
+        $transaction = TransactionService::createTransaction(
+            Auth::user()->id,
+            $type,
+            $validatedData['amount'],
+            $description,
+            $date,
+            $sourceId
+        );
+
+        if(!$transaction) {
+            return redirect()->back()->withErrors([
+                'transaction' => "Failed to create new Transaction"
+            ]);
+        }
+
+        if($tagId) {
+            TransactionService::createTransactionTag($transaction->id, $tagId);
+        }
+        
+        return redirect()->back()->with('success', 'Successfully created Transactions!');
     }
 }
