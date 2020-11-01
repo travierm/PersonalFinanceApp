@@ -50,4 +50,5 @@ Route::middleware(['auth'])->group(function() {
     Route::get('/transactions', [TransactionController::class, 'getList']);
     Route::get('/transaction/create', [TransactionController::class, 'getCreate']);
     Route::post('/transaction/create', [TransactionController::class, 'postCreate']);
+    Route::post('/transaction/update/source', [TransactionController::class, 'updateTransactionSource']);
 });

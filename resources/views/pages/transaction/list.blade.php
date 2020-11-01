@@ -32,7 +32,20 @@
                         <td>{{ ucfirst($transaction->type) }}</td>
                         <td>${{ str_replace('-', '', $transaction->amount) }}</td>
                         <td>{{ $transaction->description }}</td>
-                        <td>{{ $transaction->source_id }}</td>
+                        <!-- Transaction Source -->
+                        <td>
+                            <form method="POST" action="/transaction/update/source">
+                                @csrf
+
+                                <input type="hidden" name="transaction_id" value="{{ $transaction->id }}" />
+                                @component('components.select.source', [
+                                    'sources' => $sources,
+                                    'sourceId' => $transaction->source_id,
+                                    'submitOnChange' => true
+                                ])
+                                @endcomponent
+                            </form>
+                        </td>
                         <td></td>
                         <td>{{ $transaction->date->format('Y-m-d g:i a') }}</td>
                     </tr>
