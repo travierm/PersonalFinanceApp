@@ -2,6 +2,7 @@
 
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\User\UserConfigController;
 use App\Http\Controllers\User\UserTransactionTagController;
@@ -24,10 +25,12 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
 Route::middleware(['auth'])->group(function() {
-    // User Routes
+
+    // Dashboard
+    Route::get('/dashboard', [DashboardController::class, 'getIndex']);
+
+    // User Config
     Route::get('/user/config', [UserConfigController::class, 'getConfig']);
     Route::post('/user/config', [UserConfigController::class, 'updateConfig']);
 

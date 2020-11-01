@@ -14,7 +14,7 @@ class CreateTransactionsTable extends Migration
     public function up()
     {
         Schema::create('user_transaction_sources', function (Blueprint $table) {
-            $table->id();            
+            $table->id();
             $table->foreignId('user_id')
                 ->constrained('users')
                 ->onDelete('cascade');
@@ -33,10 +33,10 @@ class CreateTransactionsTable extends Migration
             $table->foreignId('source_id')
                 ->nullable()
                 ->constrained('user_transaction_sources');
-                
+
 
             $table->text('description')->nullable();
-            $table->float('amount');
+            $table->decimal('amount', 8, 2);
             $table->enum('type', ['income', 'expense']);
             $table->timestamp('date')->useCurrent();
             $table->timestamps();

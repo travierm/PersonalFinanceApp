@@ -63,7 +63,7 @@ class TransactionController extends Controller
         if($tagId) {
             TransactionService::createTransactionTag($transaction->id, $tagId);
         }
-        
+
         return redirect()->back()->with('success', 'Successfully created Transaction!');
     }
 }
