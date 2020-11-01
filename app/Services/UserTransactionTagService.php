@@ -1,5 +1,5 @@
 <?php
-namespace App\Http\Services;
+namespace App\Services;
 
 use App\Models\UserTransactionTag;
 
@@ -30,7 +30,7 @@ class UserTransactionTagService {
     }
 
     public static function deleteTag(Int $tagId)
-    {        
+    {
         return UserTransactionTag::where([
             'id' => $tagId
         ])->delete();

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use Auth;
-use App\Http\Services\UserConfigService;
+use App\Services\UserConfigService;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;

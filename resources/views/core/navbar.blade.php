@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm">
     <div class="container">
-        <a style="font-weight: bold;" class="navbar-brand" href="{{ url('/') }}">
+        <a style="font-weight: bold;" class="navbar-brand" href="{{ (Auth::guest() ? url('/') : url('/dashboard') )}}">
             Personal Finance App <span class="ml-2" style='font-size: 0.8em; font-weight: 200;'>Build v{{ config('app.version') }}</span>
         </a>
         <p class="navbar-brand">

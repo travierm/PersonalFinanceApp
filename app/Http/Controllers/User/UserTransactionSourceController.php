@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\User;
 
-use App\Http\Services\UserTransactionSourceService;
+use App\Services\UserTransactionSourceService;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Auth;
@@ -24,7 +24,7 @@ class UserTransactionSourceController extends Controller
         if($sourceName) {
             UserTransactionSourceService::createSource($userId, $sourceName);
         }
-        
+
         return redirect()->back();
     }
 

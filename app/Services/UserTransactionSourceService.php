@@ -1,5 +1,5 @@
 <?php
-namespace App\Http\Services;
+namespace App\Services;
 
 use App\Models\UserTransactionSource;
 
@@ -30,7 +30,7 @@ class UserTransactionSourceService {
     }
 
     public static function deleteSource(Int $sourceId)
-    {        
+    {
         return UserTransactionSource::where([
             'id' => $sourceId
         ])->delete();

@@ -6,10 +6,10 @@ use Auth;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
-use App\Http\Services\TransactionService;
-use App\Http\Services\AccountBalanceService;
-use App\Http\Services\UserTransactionTagService;
-use App\Http\Services\UserTransactionSourceService;
+use App\Services\TransactionService;
+use App\Services\AccountBalanceService;
+use App\Services\UserTransactionTagService;
+use App\Services\UserTransactionSourceService;
 
 class TransactionController extends Controller
 {

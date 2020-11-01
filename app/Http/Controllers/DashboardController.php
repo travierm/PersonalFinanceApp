@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Auth;
 use Illuminate\Http\Request;
-use App\Http\Services\AccountBalanceService;
+use App\Services\AccountBalanceService;
 
 class DashboardController extends Controller
 {

@@ -6,7 +6,7 @@ use Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-use App\Http\Services\UserTransactionTagService;
+use App\Services\UserTransactionTagService;
 
 class UserTransactionTagController extends Controller
 {
@@ -25,7 +25,7 @@ class UserTransactionTagController extends Controller
         if($tagName) {
             UserTransactionTagService::createTag($userId, $tagName);
         }
-        
+
         return redirect()->back();
     }
 
