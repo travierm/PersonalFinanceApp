@@ -14,7 +14,16 @@
                         </div>
                     @endif
 
-                    <h5>Current Account Balance: ${{ $currentAccountBalance }}</h5>
+                    <div>
+                        <div class="btn-group" role="group" aria-label="Basic example">
+                            <a class="btn btn-outline-primary" href="/transaction/create">Create Transaction</a>
+                            <a class="btn btn-primary" href="/transactions">View All</a>
+                        </div>
+                        <a class="btn btn-outline-primary" href="/user/tags">Create Tag</a>
+                        <a class="btn btn-outline-primary" href="/user/sources">Create Source</a>
+                    </div>
+
+                    <h5 class="mt-4">Current Account Balance: ${{ $currentAccountBalance }}</h5>
                 </div>
             </div>
         </div>
