@@ -25,7 +25,7 @@ class UserTransactionSourceController extends Controller
             UserTransactionSourceService::createSource($userId, $sourceName);
         }
 
-        return redirect()->back();
+        return redirect()->back()->with('success', "Created new source: $sourceName");
     }
 
     public function deleteSource($sourceId)

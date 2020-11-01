@@ -7,7 +7,7 @@ class UserTransactionTagService {
     public static function getAll(Int $userId)
     {
         return UserTransactionTag::where('user_id', $userId)
-            ->orderBy('created_at', 'desc')
+            ->orderBy('name', 'DESC')
             ->get();
     }
 

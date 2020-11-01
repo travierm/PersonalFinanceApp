@@ -9,9 +9,11 @@
         </div>
     </div>
 
+    @include('components.modal.source_create')
+
     <form method="POST">
         @csrf
-        
+
         <div class="row">
             <div class="col-lg-4">
                 @include('components.error_alert')
@@ -35,12 +37,16 @@
                 <!-- Source -->
                 <div class="form-group">
                     <label>Source</label>
-                    <select class="form-control" name="source_id">
+                    <select class="form-control mb-2" name="source_id">
                         <option value="">None</option>
                         @foreach($sources as $source)
                             <option value="{{ $source->id }}">{{ ucfirst($source->name) }}</option>
                         @endforeach
                     </select>
+                    @include('components.modal.open_modal_button', [
+                        'text' => 'Create Source',
+                        'modalId' => 'sourceCreateModal'
+                    ])
                 </div>
 
                 <!-- Tags -->

@@ -37274,6 +37274,10 @@ module.exports = function(module) {
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
+$('.modal').on('shown.bs.modal', function () {
+  $(this).find('[autofocus]').focus();
+});
+
 /***/ }),
 
 /***/ "./resources/js/bootstrap.js":

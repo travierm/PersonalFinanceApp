@@ -7,7 +7,7 @@ class UserTransactionSourceService {
     public static function getAll(Int $userId)
     {
         return UserTransactionSource::where('user_id', $userId)
-            ->orderBy('created_at', 'desc')
+            ->orderBy('name', 'ASC')
             ->get();
     }
 
