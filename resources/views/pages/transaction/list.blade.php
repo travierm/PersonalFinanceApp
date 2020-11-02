@@ -5,7 +5,7 @@
     <div class="row">
         <div class='col-lg-6'>
             <h1>Transactions</h1>
-            <h5>Current Account Balance: ${{ $currentAccountBalance }}</h5>
+            @include('components.account_balance')
         </div>
 
         <div class="col-lg-6 d-flex align-items-end flex-column">

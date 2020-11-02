@@ -14,7 +14,7 @@
                         </div>
                     @endif
 
-                    <div>
+                    <div class="mb-4">
                         <div class="btn-group" role="group" aria-label="Basic example">
                             <a class="btn btn-outline-primary" href="/transaction/create">Create Transaction</a>
                             <a class="btn btn-primary" href="/transactions">View All</a>
@@ -23,7 +23,8 @@
                         <a class="btn btn-outline-primary" href="/user/sources">Create Source</a>
                     </div>
 
-                    <h5 class="mt-4">Current Account Balance: ${{ $currentAccountBalance }}</h5>
+                    @include('components.account_balance')
+                    <h5>Total Transactions: {{ $totalTransactions }}</h5>
                 </div>
             </div>
         </div>
