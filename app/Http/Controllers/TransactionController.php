@@ -41,6 +41,14 @@ class TransactionController extends Controller
         return view('pages.transaction.create', compact('tags', 'sources', 'currentAccountBalance'));
     }
 
+    public function getDelete($transactionId)
+    {
+        $userId = Auth::user()->id;
+        TransactionService::deleteTransaction($userId, $transactionId);
+
+        return redirect()->back();
+    }
+
     public function postCreate(Request $request)
     {
         $type = $request->type;

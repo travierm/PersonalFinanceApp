@@ -49,6 +49,7 @@ Route::middleware(['auth'])->group(function() {
     // Transactions
     Route::get('/transactions', [TransactionController::class, 'getList']);
     Route::get('/transaction/create', [TransactionController::class, 'getCreate']);
+    Route::get('/transaction/delete/{transactionId}', [TransactionController::class, 'getDelete']);
     Route::get('/transaction/delete/tag/{transactionTagId}', [TransactionController::class, 'deleteTransactionTag']);
     Route::post('/transaction/create', [TransactionController::class, 'postCreate']);
     Route::post('/transaction/update/source', [TransactionController::class, 'updateTransactionSource']);

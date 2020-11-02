@@ -23,6 +23,7 @@
                     <th>Source</th>
                     <th>Tags</th>
                     <th>Date</th>
+                    <th>Remove</th>
                 </thead>
 
                 <tbody>
@@ -66,6 +67,9 @@
                             ])
                         </td>
                         <td>{{ $transaction->date->format('Y-m-d g:i a') }}</td>
+                        <td>
+                            <a class="btn btn-sm btn-danger mt-1" href="/transaction/delete/{{ $transaction->id }}">Remove</a>
+                        </td>
                     </tr>
                     @endforeach
                 @endif

@@ -31,6 +31,14 @@ class TransactionService {
         ]);
     }
 
+    public static function deleteTransaction($userId, $transactionId)
+    {
+        return Transaction::where([
+            'user_id' => $userId,
+            'id' => $transactionId
+        ])->delete();
+    }
+
     public static function createTransactionTag(Int $userId, Int $transactionId, Int $tagId)
     {
         return TransactionTag::firstOrCreate([
