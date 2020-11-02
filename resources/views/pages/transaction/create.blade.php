@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container text-light">
+<div class="container-md text-light">
     <div class="row">
         <div class='col-lg-12'>
             <h1>Create Transaction</h1>
