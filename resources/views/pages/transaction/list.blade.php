@@ -21,7 +21,7 @@
                     <th>Amount</th>
                     <th>Description</th>
                     <th>Source</th>
-                    <th>Tag</th>
+                    <th>Tags</th>
                     <th>Date</th>
                 </thead>
 
@@ -46,7 +46,25 @@
                                 @endcomponent
                             </form>
                         </td>
-                        <td></td>
+                        <!-- Tags -->
+                        <td>
+                            <!-- List of Tags attached to Transaction -->
+                            @include('components.list.tags', [
+                                'transactionTags' => $transaction->getTags()
+                            ])
+
+                            <!-- Modal for Attaching Tags to Transactions -->
+                            @include('components.modal.transaction_tag_create', [
+                                'tags' => $tags,
+                                'transactionId' => $transaction->id
+                            ])
+
+                            <!-- Button to open Modal -->
+                            @include('components.modal.open_modal_button', [
+                                'text' => 'Attach Tag',
+                                'modalId' => 'transactionTagCreateModal_transactionId_' . $transaction->id
+                            ])
+                        </td>
                         <td>{{ $transaction->date->format('Y-m-d g:i a') }}</td>
                     </tr>
                     @endforeach

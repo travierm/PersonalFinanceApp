@@ -52,7 +52,7 @@
                 <!-- Tags -->
                 <div class="form-group">
                     <label>Tag</label>
-                    <select class="form-control" name="tag_id">
+                    <select class="form-control mb-2" name="tag_id">
                         <option value="">None</option>
                         @foreach($tags as $tag)
                             <option value="{{ $tag->id }}">{{ ucfirst($tag->name) }}</option>

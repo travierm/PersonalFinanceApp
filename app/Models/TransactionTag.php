@@ -10,6 +10,7 @@ class TransactionTag extends Model
     use HasFactory;
 
     protected $fillable = [
+        'tag_id',
         'user_id',
         'transaction_id'
     ];

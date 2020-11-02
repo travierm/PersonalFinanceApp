@@ -31,12 +31,20 @@ class TransactionService {
         ]);
     }
 
-    public static function createTransactionTag(Int $transactionId, Int $tagId)
+    public static function createTransactionTag(Int $userId, Int $transactionId, Int $tagId)
     {
         return TransactionTag::firstOrCreate([
             'tag_id' => $tagId,
+            'user_id' => $userId,
             'transaction_id' => $transactionId
         ]);
+    }
+
+    public static function deleteTransactionTag(Int $transactionTagId)
+    {
+        return TransactionTag::where([
+            'id' => $transactionTagId
+        ])->delete();
     }
 
     public static function updateTransactionSource(Int $transactionId, Int $sourceId)

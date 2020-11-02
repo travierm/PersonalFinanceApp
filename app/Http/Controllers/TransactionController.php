@@ -44,6 +44,7 @@ class TransactionController extends Controller
     public function postCreate(Request $request)
     {
         $type = $request->type;
+        $userId = Auth::user()->id;
         $date = Carbon::parse($request->date);
         $tagId = $request->tag_id;
         $sourceId = $request->source_id;
@@ -55,7 +56,7 @@ class TransactionController extends Controller
         ]);
 
         $transaction = TransactionService::createTransaction(
-            Auth::user()->id,
+            $userId,
             $type,
             $validatedData['amount'],
             $description,
@@ -70,10 +71,30 @@ class TransactionController extends Controller
         }
 
         if($tagId) {
-            TransactionService::createTransactionTag($transaction->id, $tagId);
+            TransactionService::createTransactionTag($userId, $transaction->id, $tagId);
         }
 
         return redirect()->back()->with('success', 'Successfully created Transaction!');
+    }
+
+    public function createTransactionTag(Request $request)
+    {
+        $tagId = $request->tag_id;
+        $userId = Auth::user()->id;
+        $transactionId = $request->transaction_id;
+
+        if($tagId) {
+            TransactionService::createTransactionTag($userId, $transactionId, $tagId);
+        }
+
+        return redirect()->back()->with('success', 'Attached tag to transaction!');
+    }
+
+    public function deleteTransactionTag($transactionTagId)
+    {
+        TransactionService::deleteTransactionTag($transactionTagId);
+
+        return redirect()->back();
     }
 
     public function updateTransactionSource(Request $request)

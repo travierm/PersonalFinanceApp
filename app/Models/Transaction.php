@@ -21,4 +21,23 @@ class Transaction extends Model
     protected $dates = [
         'date'
     ];
+
+    public function getTags()
+    {
+        $attachedTags = collect(TransactionTag::where('transaction_id', $this->id)->get());
+
+        $tags = UserTransactionTag::whereIn('id', $attachedTags->pluck('tag_id'))
+            ->orderBy('name', 'DESC')
+            ->get();
+
+        foreach($tags as &$tag) {
+            $transactionTag = $attachedTags->where('tag_id', $tag->id)
+                ->where('transaction_id', $this->id)
+                ->first();
+
+            $tag->transaction_tag_id = $transactionTag->id;
+        }
+
+        return $tags;
+    }
 }
