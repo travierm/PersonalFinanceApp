@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
+
 <div class="container-md">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -25,6 +27,12 @@
 
                     @include('components.account_balance')
                     <h5>Total Transactions: {{ $totalTransactions }}</h5>
+
+                    @if($chart)
+                    <div>
+                        {!! $chart->render() !!}
+                    </div>
+                    @endif
                 </div>
             </div>
         </div>

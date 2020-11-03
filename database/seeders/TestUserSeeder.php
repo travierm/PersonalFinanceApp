@@ -25,13 +25,16 @@ class TestUserSeeder extends Seeder
 
         $userId = $user->id;
 
-        $this->createTag($userId, 'fast food');
-        $this->createTag($userId, 'groceries');
         $this->createTag($userId, 'paycheck');
+        $this->createTag($userId, 'groceries');
+        $this->createTag($userId, 'fast food');
+        $this->createTag($userId, 'electronics');
 
+        $this->createSource($userId, 'employer');
         $this->createSource($userId, 'meijer');
-        $this->createSource($userId, 'culvers');
-        $this->createSource($userId, 'contract service');
+        $this->createSource($userId, 'taco bell');
+        $this->createSource($userId, 'best buy');
+
     }
 
     private function createTag($userId, $name)

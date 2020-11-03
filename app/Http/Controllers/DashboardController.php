@@ -6,6 +6,7 @@ use Auth;
 use Illuminate\Http\Request;
 use App\Services\TransactionService;
 use App\Services\AccountBalanceService;
+use App\Http\Charts\ExpenseTypePieChart;
 
 class DashboardController extends Controller
 {
@@ -16,6 +17,8 @@ class DashboardController extends Controller
         $totalTransactions = TransactionService::getCount($userId);
         $currentAccountBalance = AccountBalanceService::getCurrentAccountBalance($userId);
 
-        return view('pages.dashboard', compact('totalTransactions', 'currentAccountBalance'));
+        $chart = ExpenseTypePieChart::createChart($userId);
+
+        return view('pages.dashboard', compact('chart', 'totalTransactions', 'currentAccountBalance'));
     }
 }
