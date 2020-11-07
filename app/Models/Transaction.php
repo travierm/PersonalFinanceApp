@@ -22,6 +22,11 @@ class Transaction extends Model
         'date'
     ];
 
+    public function source()
+    {
+        return $this->hasOne('App\Models\UserTransactionSource', 'source_id');
+    }
+
     public function getTags()
     {
         $attachedTags = collect(TransactionTag::where('transaction_id', $this->id)->get());

@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
+
 <div class="container-md">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -25,6 +27,22 @@
 
                     @include('components.account_balance')
                     <h5>Total Transactions: {{ $totalTransactions }}</h5>
+
+                    @if($tagPieChart)
+                    <div class="mt-4">
+                        <h3>Spending by Tag</h3>
+                        {!! $tagPieChart->render() !!}
+                    </div>
+                    @endif
+
+                    @if($sourcePieChart)
+                    <div class="mt-4">
+                        <h3>Spending by Source</h3>
+                        {!! $sourcePieChart->render() !!}
+                    </div>
+                    @endif
+
+
                 </div>
             </div>
         </div>
