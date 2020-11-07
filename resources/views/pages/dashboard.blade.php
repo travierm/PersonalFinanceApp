@@ -28,11 +28,21 @@
                     @include('components.account_balance')
                     <h5>Total Transactions: {{ $totalTransactions }}</h5>
 
-                    @if($chart)
-                    <div>
-                        {!! $chart->render() !!}
+                    @if(isset($tagPieChart))
+                    <div class="mt-4">
+                        <h3>Spending by Tag</h3>
+                        {!! $tagPieChart->render() !!}
                     </div>
                     @endif
+
+                    @if(isset($sourcePieChart))
+                    <div class="mt-4">
+                        <h3>Spending by Source</h3>
+                        {!! $sourcePieChart->render() !!}
+                    </div>
+                    @endif
+
+
                 </div>
             </div>
         </div>

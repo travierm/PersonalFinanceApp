@@ -4,9 +4,7 @@ namespace App\Http\Charts;
 use App\Models\UserTransactionSource;
 use App\Services\AccountBalanceService;
 
-
-
-class ExpenseTypePieChart {
+class TagExpensePieChart {
     public static function createChart($userId)
     {
         $data = self::getData($userId);
@@ -29,7 +27,7 @@ class ExpenseTypePieChart {
         ];
 
         $chart = app()->chartjs
-            ->name('pieChartTest')
+            ->name('tagExpensePieChart')
             ->type('pie')
             ->size(['width' => 400, 'height' => 200])
             ->labels($data['labels'])
@@ -51,13 +49,12 @@ class ExpenseTypePieChart {
             'labels' => [],
             'datapoints' => []
         ];
-        $spendingPerSource = AccountBalanceService::getSpendingPerSource($userId);
 
-        foreach($spendingPerSource as $sourceGroup)
+        $spendingPerTag = AccountBalanceService::getSpendingPerTag($userId);
+        foreach($spendingPerTag as $tagGroup)
         {
-            $sourceName = UserTransactionSource::find($sourceGroup->source_id)->name;
-            $data['labels'][] = ucwords($sourceName);
-            $data['datapoints'][] = $sourceGroup->total;
+            $data['labels'][] = ucwords($tagGroup->tagName);
+            $data['datapoints'][] = ucwords($tagGroup->total);
         }
 
         return $data;
