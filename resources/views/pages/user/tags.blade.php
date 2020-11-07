@@ -37,7 +37,7 @@
                     @if($tags)
                         @foreach($tags as $tag)
                         <tr>
-                            <td>{{ ucfirst($tag->name) }}</td>
+                            <td>{{ ucwords($tag->name) }}</td>
                             <td>{{ $tag->created_at->diffForHumans() }}</td>
                             <td>
                                 <a class="btn btn-danger" href='/user/tags/delete/{{ $tag->id }}'>Remove</a>

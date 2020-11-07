@@ -37,7 +37,7 @@
                     @if($sources)
                         @foreach($sources as $source)
                         <tr>
-                            <td>{{ ucfirst($source->name) }}</td>
+                            <td>{{ ucwords($source->name) }}</td>
                             <td>{{ $source->created_at->diffForHumans() }}</td>
                             <td>
                                 <a class="btn btn-danger" href='/user/source/delete/{{ $source->id }}'>Remove</a>

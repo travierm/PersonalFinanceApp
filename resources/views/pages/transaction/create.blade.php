@@ -40,7 +40,7 @@
                     <select class="form-control mb-2" name="source_id">
                         <option value="">None</option>
                         @foreach($sources as $source)
-                            <option value="{{ $source->id }}">{{ ucfirst($source->name) }}</option>
+                            <option value="{{ $source->id }}">{{ ucwords($source->name) }}</option>
                         @endforeach
                     </select>
                     @include('components.modal.open_modal_button', [
@@ -55,7 +55,7 @@
                     <select class="form-control mb-2" name="tag_id">
                         <option value="">None</option>
                         @foreach($tags as $tag)
-                            <option value="{{ $tag->id }}">{{ ucfirst($tag->name) }}</option>
+                            <option value="{{ $tag->id }}">{{ ucwords($tag->name) }}</option>
                         @endforeach
                     </select>
                 </div>

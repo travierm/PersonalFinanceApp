@@ -30,7 +30,7 @@
                 @if(@$transactions)
                     @foreach($transactions as $transaction)
                     <tr>
-                        <td>{{ ucfirst($transaction->type) }}</td>
+                        <td>{{ ucwords($transaction->type) }}</td>
                         <td>${{ str_replace('-', '', $transaction->amount) }}</td>
                         <td>{{ $transaction->description }}</td>
                         <!-- Transaction Source -->
