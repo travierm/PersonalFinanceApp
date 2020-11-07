@@ -2,14 +2,25 @@
 namespace App\Services;
 
 use DB;
+use App\Models\UserConfig;
 use App\Models\Transaction;
 use App\Models\UserTransactionSource;
 
 class AccountBalanceService {
     public static function getCurrentAccountBalance($userId)
     {
-        return Transaction::where('user_id', $userId)
+
+        $userConfig = UserConfig::where('user_id', $userId)
+            ->first();
+
+        $transactionSum = Transaction::where('user_id', $userId)
             ->sum('amount');
+
+        if(isset($userConfig->current_account_balance)) {
+            $transactionSum += $userConfig->current_account_balance;
+        }
+
+        return $transactionSum;
     }
 
     public static function getSpendingPerTag($userId)
