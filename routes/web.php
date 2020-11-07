@@ -23,7 +23,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+Auth::routes([
+    // Disable Registration
+    'register' => false
+]);
 
 Route::middleware(['auth'])->group(function() {
 
